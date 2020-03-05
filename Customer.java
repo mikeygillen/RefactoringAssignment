@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 public class Customer {
 
-	String PPS ="";
-	String surname = "";
-	String firstName = "";
-	String DOB ="";
-	String customerID = "";
-	String password = "";
+	String PPS;
+	String surname;
+	String firstName;
+	String DOB;
+	String customerID;
+	String password;
 	
-	ArrayList<CustomerAccount> accounts = new ArrayList<CustomerAccount> ();
+	ArrayList<CustomerAccount> accounts = new ArrayList<>();
 
 	//Blank constructor
 	public Customer()
@@ -31,7 +31,7 @@ public class Customer {
 		this.firstName = firstName;
 		this.DOB = DOB;
 		this.customerID = customerID;
-		this.password = password;;
+		this.password = password;
 		this.accounts = accounts;
 	}
 	
