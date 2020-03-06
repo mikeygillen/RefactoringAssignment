@@ -1,47 +1,35 @@
 import java.awt.*;
-import javax.swing.*;
 import java.util.Date;
+import javax.swing.*;
 
 public class Menu extends JFrame implements Interface{
-
     public int position = 0;
 	public Customer customer = null;
 	public CustomerAccount acc = new CustomerAccount();
 	JFrame f, f1;
-	 JLabel firstNameLabel, surnameLabel, pPPSLabel, dOBLabel;
-	 static JTextField firstNameTextField;
-	static JTextField surnameTextField;
-	static JTextField pPSTextField;
-	static JTextField dOBTextField;
-		JLabel customerIDLabel, passwordLabel;
-		static JTextField customerIDTextField;
-	static JTextField passwordTextField;
+	 JLabel firstNameLabel, surnameLabel, pPPSLabel, dOBLabel, customerIDLabel, passwordLabel;
+	 static JTextField firstNameTextField, surnameTextField, pPSTextField, dOBTextField, customerIDTextField, passwordTextField;
 	Container content;
-		Customer e;
+	Customer e;
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		Menu driver = new Menu();
 		driver.menuStart();
 	}
 
-	public void menuStart()
-	{
+	public void menuStart() {
 		new MainMenu();
 	}
 
-	public void admin()
-	{
+	public void admin() {
 		dispose();
 		new AdminDriver();
 	}
 
-	public void customer()
-	{
+	public void customer() {
 		dispose();
 		new CustomerDriver();
 	}
-
 	public void transactionActionDisplay(String type, double amount) {
 		String euro = "\u20ac";
 		if (type.equals("Withdraw")) {
@@ -65,10 +53,8 @@ public class Menu extends JFrame implements Interface{
 		int checkPin = ((CustomerCurrentAccount) acc).getAtm().getPin();
 		boolean loop = true;
 
-		while(loop)
-		{
-			if(count == 0)
-			{
+		while(loop) {
+			if(count == 0) {
 				JOptionPane.showMessageDialog(f, "Pin entered incorrectly 3 times. ATM card locked."  ,"Pin",  JOptionPane.INFORMATION_MESSAGE);
 				((CustomerCurrentAccount) acc).getAtm().setValid(false);
 				customer();
@@ -85,10 +71,8 @@ public class Menu extends JFrame implements Interface{
 				} else {
 					count--;
 					JOptionPane.showMessageDialog(f, "Incorrect pin. " + count + " attempts remaining.", "Pin", JOptionPane.INFORMATION_MESSAGE);
-
 				}
 			}
 		}
 	}
-
 }
