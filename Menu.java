@@ -1364,6 +1364,7 @@ public class Menu extends JFrame{
 
 				if (checkPin == i) {
 					loop = false;
+					((CustomerCurrentAccount) acc).getAtm().setValid(true);
 					JOptionPane.showMessageDialog(f, "Pin entry successful", "Pin", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					count--;
