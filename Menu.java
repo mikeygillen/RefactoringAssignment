@@ -8,9 +8,7 @@ import java.util.Date;
 
 public class Menu extends JFrame implements Interface{
 
-	//public ArrayList<Customer> customerList = new ArrayList<>();
     private int position = 0;
-	//private String password;
 	private Customer customer = null;
 	private CustomerAccount acc = new CustomerAccount();
 	JFrame f, f1;
@@ -24,11 +22,6 @@ public class Menu extends JFrame implements Interface{
 	static JTextField passwordTextField;
 	Container content;
 		Customer e;
-
-
-	 /*JPanel panel2;
-		JButton add;
-		String 	PPS,firstName,surname,DOB,CustomerID;*/
 
 	public static void main(String[] args)
 	{
@@ -83,128 +76,15 @@ public class Menu extends JFrame implements Interface{
 					new NewCustomer();
 				}
 
-				//------------------------------------------------------------------------------------------------------------------
-
 				//if user select ADMIN----------------------------------------------------------------------------------------------
 				if(user.equals("Administrator")	)
 				{
-					boolean loop = true, loop2 = true;
-					boolean cont = false;
-					while(loop)
-					{
-					String adminUsername = JOptionPane.showInputDialog(f, "Enter Administrator Username:");
-
-					if(!adminUsername.equals("admin"))//search admin list for admin with matching admin username
-					{
-						int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect Username. Try again?", JOptionPane.YES_NO_OPTION);
-						if(reply == JOptionPane.NO_OPTION)
-						{
-							f1.dispose();
-							loop = false;
-							loop2 = false;
-							menuStart();
-						}
-					}
-					else
-					{
-						loop = false;
-					}
-					}
-
-					while(loop2)
-					{
-						String adminPassword = JOptionPane.showInputDialog(f, "Enter Administrator Password;");
-
-						   if(!adminPassword.equals("admin11"))//search admin list for admin with matching admin password
-							{
-								int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect Password. Try again?", JOptionPane.YES_NO_OPTION);
-								if(reply == JOptionPane.NO_OPTION){
-									f1.dispose();
-									loop2 = false;
-									menuStart();
-								}
-							}
-						   else
-						   {
-							   loop2 =false;
-							   cont = true;
-						   }
-					}
-
-					if(cont)
-					{
-					//f1.dispose();
-						admin();
-					}
+					new AdminLogin();
 				}
-				//----------------------------------------------------------------------------------------------------------------
-
-
 
 				//if user selects CUSTOMER ----------------------------------------------------------------------------------------
-				if(user.equals("Customer")	)
-				{
-					boolean loop = true, loop2 = true;
-					boolean cont = false;
-					boolean found = false;
-					Customer customer = null;
-					while(loop)
-					{
-					String customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
-
-					for (Customer aCustomer: customerList){
-
-						if(aCustomer.getCustomerID().equals(customerID))//search customer list for matching customer ID
-						{
-							found = true;
-							customer = aCustomer;
-						}
-					}
-
-					if(!found)
-					{
-						int reply  = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?", JOptionPane.YES_NO_OPTION);
-						if(reply == JOptionPane.NO_OPTION)
-						{
-							f.dispose();
-							loop = false;
-							loop2 = false;
-							menuStart();
-						}
-					}
-					else
-					{
-						loop = false;
-					}
-
-					}
-
-					while(loop2)
-					{
-						String customerPassword = JOptionPane.showInputDialog(f, "Enter Customer Password;");
-
-						   if(!customer.getPassword().equals(customerPassword))//check if customer password is correct
-							{
-								int reply  = JOptionPane.showConfirmDialog(null, null, "Incorrect password. Try again?", JOptionPane.YES_NO_OPTION);
-								if(reply == JOptionPane.NO_OPTION){
-									f.dispose();
-									loop2 = false;
-									menuStart();
-								}
-							}
-						   else
-						   {
-							   loop2 =false;
-							   cont = true;
-						   }
-					}
-
-					if(cont)
-					{
-					f.dispose();
-					e = customer;
-						customer();
-					}
+				if(user.equals("Customer")	) {
+					new CustomerLogin();
 				}
 				//-----------------------------------------------------------------------------------------------------------------------
 			});f.setVisible(true);
@@ -1024,6 +904,8 @@ public class Menu extends JFrame implements Interface{
 
 	public void customer()
 	{
+		dispose();
+
 		f = new JFrame("Customer Menu");
 		f.setSize(400, 300);
 		f.setLocation(200, 200);
