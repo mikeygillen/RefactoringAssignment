@@ -1268,21 +1268,7 @@ public class Menu extends JFrame{
 		{
 			JOptionPane.showMessageDialog(f, "You must enter a numerical value!" ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
 		}
-
-
-	String euro = "\u20ac";
-	 acc.setBalance(acc.getBalance() + balance);
-	// String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-	 Date date = new Date();
-	 String date2 = date.toString();
-	 String type = "Lodgement";
-		double amount = balance;
-
-		AccountTransaction transaction = new AccountTransaction(date2, type, amount);
-		acc.getTransactionList().add(transaction);
-
-	 JOptionPane.showMessageDialog(f, balance + euro + " added do you account!" ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
-	 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Lodgement",  JOptionPane.INFORMATION_MESSAGE);
+	transactionActionDisplay("Lodgement", balance);
 	}
 
 	});
@@ -1316,25 +1302,8 @@ public class Menu extends JFrame{
 				withdraw = 0;
 			}
 
-		String euro = "\u20ac";
-		 acc.setBalance(acc.getBalance()-withdraw);
-		   //recording transaction:
-	//		String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		 Date date = new Date();
-		 String date2 = date.toString();
-
-		 String type = "Withdraw";
-			double amount = withdraw;
-
-			AccountTransaction transaction = new AccountTransaction(date2, type, amount);
-			acc.getTransactionList().add(transaction);
-
-		 JOptionPane.showMessageDialog(f, withdraw + euro + " withdrawn." ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
-		 JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,"Withdraw",  JOptionPane.INFORMATION_MESSAGE);
+		transactionActionDisplay("Withdraw", withdraw);
 		}
-
-
-
 	});
 
 	returnButton1.addActionListener(ae13 -> {
@@ -1342,6 +1311,25 @@ public class Menu extends JFrame{
 		menuStart();
 	});		});
 	}
+	}
+
+	private void transactionActionDisplay(String type, double amount) {
+		String euro = "\u20ac";
+		if (type.equals("Withdraw")) {
+			acc.setBalance(acc.getBalance() - amount);
+		}else {
+			acc.setBalance(acc.getBalance() + amount);
+		}
+		//recording transaction:
+		//		String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		Date date = new Date();
+		String date2 = date.toString();
+
+		AccountTransaction transaction = new AccountTransaction(date2, type, amount);
+		acc.getTransactionList().add(transaction);
+
+		JOptionPane.showMessageDialog(f, euro + amount + " Confirmed." ,type,  JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() + euro ,type,  JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public void correctPin(){
