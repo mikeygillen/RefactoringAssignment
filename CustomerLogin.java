@@ -4,7 +4,6 @@ public class CustomerLogin extends Menu implements Interface {
 
     public CustomerLogin(){
         boolean loop = true, loop2 = true;
-        boolean cont = false;
         boolean found = false;
         Customer customer = null;
         while(loop)
@@ -35,7 +34,6 @@ public class CustomerLogin extends Menu implements Interface {
             {
                 loop = false;
             }
-
         }
 
         while(loop2)
@@ -53,16 +51,10 @@ public class CustomerLogin extends Menu implements Interface {
             }
             else
             {
+                e = customer;
+                customer();
                 loop2 =false;
-                cont = true;
             }
-        }
-
-        if(cont)
-        {
-            //f.dispose();
-            e = customer;
-            customer();
         }
     }
 }

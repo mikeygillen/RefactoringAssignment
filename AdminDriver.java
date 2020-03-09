@@ -125,7 +125,6 @@ public class AdminDriver extends Menu implements Interface {
                         });
                         f.setVisible(true);
 
-
                         JComboBox<String> box = new JComboBox<>();
                         for (int i =0; i < customer.getAccounts().size(); i++)
                         {
@@ -133,7 +132,6 @@ public class AdminDriver extends Menu implements Interface {
 
                             box.addItem(customer.getAccounts().get(i).getNumber());
                         }
-
 
                         box.getSelectedItem();
 
@@ -191,7 +189,6 @@ public class AdminDriver extends Menu implements Interface {
                                     JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance() ,"Success!",  JOptionPane.INFORMATION_MESSAGE);
                                 }
 
-
                                 f.dispose();
                                 admin();
                             });
@@ -205,8 +202,6 @@ public class AdminDriver extends Menu implements Interface {
                     }
                 }
             }
-
-
 
         });
 
@@ -745,7 +740,6 @@ public class AdminDriver extends Menu implements Interface {
                             f.dispose();
                             admin();
                         }
-
                     }
                 }
             }

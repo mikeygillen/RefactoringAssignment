@@ -10,7 +10,7 @@ public class Menu extends JFrame implements Interface{
 	 JLabel firstNameLabel, surnameLabel, pPPSLabel, dOBLabel, customerIDLabel, passwordLabel;
 	 static JTextField firstNameTextField, surnameTextField, pPSTextField, dOBTextField, customerIDTextField, passwordTextField;
 	Container content;
-	Customer e;
+	public Customer e;
 
 	public static void main(String[] args) {
 		Menu driver = new Menu();

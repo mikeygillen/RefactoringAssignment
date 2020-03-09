@@ -6,8 +6,6 @@ import java.awt.event.WindowEvent;
 public class CustomerDriver extends Menu implements Interface {
 
     public CustomerDriver(){
-        dispose();
-
         f = new JFrame("Customer Menu");
         f.setSize(400, 300);
         f.setLocation(200, 200);
@@ -16,7 +14,7 @@ public class CustomerDriver extends Menu implements Interface {
         });
         f.setVisible(true);
 
-        if(e.getAccounts().size() == 0)
+        if(this.e.getAccounts().size() == 0)
         {
             JOptionPane.showMessageDialog(null, "This customer does not have any accounts yet. \n An admin must create an account for this customer \n for them to be able to use customer functionality. " ,"Oops!",  JOptionPane.INFORMATION_MESSAGE);
             f.dispose();
@@ -37,16 +35,16 @@ public class CustomerDriver extends Menu implements Interface {
             buttonPanel.add(continueButton);
 
             JComboBox<String> box = new JComboBox<>();
-            for (int i =0; i < e.getAccounts().size(); i++)
+            for (int i = 0; i < this.e.getAccounts().size(); i++)
             {
-                box.addItem(e.getAccounts().get(i).getNumber());
+                box.addItem(this.e.getAccounts().get(i).getNumber());
             }
 
-            for(int i = 0; i<e.getAccounts().size(); i++)
+            for(int i = 0; i< this.e.getAccounts().size(); i++)
             {
-                if(e.getAccounts().get(i).getNumber() == box.getSelectedItem() )
+                if(this.e.getAccounts().get(i).getNumber() == box.getSelectedItem() )
                 {
-                    acc = e.getAccounts().get(i);
+                    acc = this.e.getAccounts().get(i);
                 }
             }
 
